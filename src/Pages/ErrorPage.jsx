@@ -6,6 +6,7 @@ const ErrorPage = () => {
     return (
         <div>
            {error.message}
+           E
         </div>
     );
 };

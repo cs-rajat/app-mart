@@ -1,0 +1,218 @@
+[
+  {
+    "id": 1,
+    "image": "https://img.icons8.com/ios-filled/512/task.png",
+    "title": "TaskMaster Pro",
+    "companyName": "Productive Labs",
+    "description": "Boost productivity with smart task management and AI scheduling assistance.",
+    "size": 48,
+    "reviews": 128000,
+    "ratingAvg": 4.6,
+    "downloads": 5600000,
+    "ratings": [
+      { "name": "1 star", "count": 1200 },
+      { "name": "2 star", "count": 2500 },
+      { "name": "3 star", "count": 9800 },
+      { "name": "4 star", "count": 25000 },
+      { "name": "5 star", "count": 89000 }
+    ]
+  },
+  {
+    "id": 2,
+    "image": "https://img.icons8.com/ios-filled/512/fitness-app.png",
+    "title": "FitTrack Daily",
+    "companyName": "HealthCore Inc.",
+    "description": "Track workouts, calories, and goals with real-time analytics and progress charts.",
+    "size": 62,
+    "reviews": 99000,
+    "ratingAvg": 4.4,
+    "downloads": 4200000,
+    "ratings": [
+      { "name": "1 star", "count": 3000 },
+      { "name": "2 star", "count": 4500 },
+      { "name": "3 star", "count": 12000 },
+      { "name": "4 star", "count": 26000 },
+      { "name": "5 star", "count": 53500 }
+    ]
+  },
+  {
+    "id": 3,
+    "image": "https://img.icons8.com/ios-filled/512/note.png",
+    "title": "NoteVerse",
+    "companyName": "Syncify Studio",
+    "description": "Your all-in-one note-taking app with instant cloud sync and markdown support.",
+    "size": 35,
+    "reviews": 78000,
+    "ratingAvg": 4.7,
+    "downloads": 3200000,
+    "ratings": [
+      { "name": "1 star", "count": 1000 },
+      { "name": "2 star", "count": 2200 },
+      { "name": "3 star", "count": 7400 },
+      { "name": "4 star", "count": 21000 },
+      { "name": "5 star", "count": 46800 }
+    ]
+  },
+  {
+    "id": 4,
+    "image": "https://img.icons8.com/ios-filled/512/camera.png",
+    "title": "PhotoSpark",
+    "companyName": "PixelEdge Media",
+    "description": "Edit and enhance your photos with pro filters, effects, and background remover.",
+    "size": 89,
+    "reviews": 152000,
+    "ratingAvg": 4.5,
+    "downloads": 9400000,
+    "ratings": [
+      { "name": "1 star", "count": 4000 },
+      { "name": "2 star", "count": 6200 },
+      { "name": "3 star", "count": 21000 },
+      { "name": "4 star", "count": 48000 },
+      { "name": "5 star", "count": 73000 }
+    ]
+  },
+  {
+    "id": 5,
+    "image": "https://img.icons8.com/ios-filled/512/wallet.png",
+    "title": "FinMate",
+    "companyName": "SmartLedger Co.",
+    "description": "Manage your expenses, savings, and budgets with AI-powered insights.",
+    "size": 41,
+    "reviews": 113000,
+    "ratingAvg": 4.3,
+    "downloads": 3800000,
+    "ratings": [
+      { "name": "1 star", "count": 2500 },
+      { "name": "2 star", "count": 3900 },
+      { "name": "3 star", "count": 10500 },
+      { "name": "4 star", "count": 29000 },
+      { "name": "5 star", "count": 68000 }
+    ]
+  },
+  {
+    "id": 6,
+    "image": "https://img.icons8.com/ios-filled/512/language.png",
+    "title": "LangLearn",
+    "companyName": "EduWorld",
+    "description": "Learn languages with fun lessons, AI chat, and real pronunciation practice.",
+    "size": 72,
+    "reviews": 215000,
+    "ratingAvg": 4.8,
+    "downloads": 10600000,
+    "ratings": [
+      { "name": "1 star", "count": 4200 },
+      { "name": "2 star", "count": 6200 },
+      { "name": "3 star", "count": 15000 },
+      { "name": "4 star", "count": 36000 },
+      { "name": "5 star", "count": 153600 }
+    ]
+  },
+  {
+    "id": 7,
+    "image": "https://img.icons8.com/ios-filled/512/news.png",
+    "title": "NewsToday",
+    "companyName": "MediaCore",
+    "description": "Stay updated with trending stories, real-time news, and personalized feeds.",
+    "size": 54,
+    "reviews": 94000,
+    "ratingAvg": 4.2,
+    "downloads": 4600000,
+    "ratings": [
+      { "name": "1 star", "count": 3800 },
+      { "name": "2 star", "count": 5600 },
+      { "name": "3 star", "count": 14800 },
+      { "name": "4 star", "count": 27000 },
+      { "name": "5 star", "count": 42800 }
+    ]
+  },
+  {
+    "id": 8,
+    "image": "https://img.icons8.com/ios-filled/512/music.png",
+    "title": "MusicVibe",
+    "companyName": "Harmony Works",
+    "description": "Stream your favorite songs, create playlists, and discover new artists daily.",
+    "size": 95,
+    "reviews": 362000,
+    "ratingAvg": 4.9,
+    "downloads": 25600000,
+    "ratings": [
+      { "name": "1 star", "count": 5800 },
+      { "name": "2 star", "count": 7200 },
+      { "name": "3 star", "count": 22000 },
+      { "name": "4 star", "count": 65000 },
+      { "name": "5 star", "count": 261000 }
+    ]
+  },
+  {
+    "id": 9,
+    "image": "https://img.icons8.com/ios-filled/512/shopping-cart.png",
+    "title": "QuickShop",
+    "companyName": "BuyNow Ltd.",
+    "description": "Shop the latest trends with fast delivery, secure payments, and exclusive deals.",
+    "size": 88,
+    "reviews": 176000,
+    "ratingAvg": 4.4,
+    "downloads": 8700000,
+    "ratings": [
+      { "name": "1 star", "count": 4200 },
+      { "name": "2 star", "count": 7100 },
+      { "name": "3 star", "count": 18300 },
+      { "name": "4 star", "count": 44000 },
+      { "name": "5 star", "count": 102400 }
+    ]
+  },
+  {
+    "id": 10,
+    "image": "https://img.icons8.com/ios-filled/512/meditation.png",
+    "title": "MindEase",
+    "companyName": "PeaceTech",
+    "description": "Relax and reduce stress with guided meditations, sleep sounds, and breathing tools.",
+    "size": 57,
+    "reviews": 88000,
+    "ratingAvg": 4.7,
+    "downloads": 3900000,
+    "ratings": [
+      { "name": "1 star", "count": 1800 },
+      { "name": "2 star", "count": 2600 },
+      { "name": "3 star", "count": 7200 },
+      { "name": "4 star", "count": 19000 },
+      { "name": "5 star", "count": 57400 }
+    ]
+  },
+  {
+    "id": 11,
+    "image": "https://img.icons8.com/ios-filled/512/code.png",
+    "title": "CodeBuddy",
+    "companyName": "DevLab Studio",
+    "description": "Learn coding through interactive projects, quizzes, and real-world examples.",
+    "size": 68,
+    "reviews": 64000,
+    "ratingAvg": 4.5,
+    "downloads": 2500000,
+    "ratings": [
+      { "name": "1 star", "count": 1600 },
+      { "name": "2 star", "count": 2300 },
+      { "name": "3 star", "count": 7000 },
+      { "name": "4 star", "count": 18000 },
+      { "name": "5 star", "count": 35100 }
+    ]
+  },
+  {
+    "id": 12,
+    "image": "https://img.icons8.com/ios-filled/512/food.png",
+    "title": "Foodify",
+    "companyName": "TasteTech",
+    "description": "Order food from your favorite restaurants and track deliveries in real-time.",
+    "size": 80,
+    "reviews": 215000,
+    "ratingAvg": 4.3,
+    "downloads": 10500000,
+    "ratings": [
+      { "name": "1 star", "count": 6200 },
+      { "name": "2 star", "count": 8400 },
+      { "name": "3 star", "count": 19220 },
+      { "name": "4 star", "count": 48000 },
+      { "name": "5 star", "count": 133200 }
+    ]
+  }
+]
