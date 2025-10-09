@@ -14,11 +14,15 @@ const Products = () => {
   return (
     <section className="bg-gray-200">
       <div className="max-w-11/12 mx-auto py-10">
-        <div className="flex justify-between py-5 items-center">
+      <div className='text-center  space-y-2'>
+                <h1 className='text-4xl font-extrabold'>Our All Applications</h1>
+                <p className='text-gray-500'>Explore All Apps on the Market developed by us. We code for Millions</p>
+            </div>
+        <div className="md:flex space-y-2 justify-between py-5 items-center">
           <h1 className="text-3xl font-semibold">
-            All Products{" "}
+            All Apps{" "}
             <span className="text-sm text-gray-500">
-              ({searchedProducts.length}) Products Found.
+              ({searchedProducts.length}) Apps Found.
             </span>
           </h1>
           <label className="input">
