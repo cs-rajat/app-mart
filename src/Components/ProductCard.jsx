@@ -1,19 +1,28 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import downIcon from "../assets/icon-downloads.png";
 import ratIcon from "../assets/icon-ratings.png";
 
 const ProductCard = ({ product }) => {
-  const { title, image, downloads, ratingAvg } = product;
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/product/${product.id}`);
+  };
+
+  const { title, image, downloads, ratingAvg, imageAlt, imageFallback } = product;
+
   return (
     <div
+      onClick={handleClick}
       className="card p-5 rounded-md flex flex-col gap-2 shadow-xs bg-white 
-    transition-all duration-300 hover:shadow-lg hover:-translate-y-3 cursor-pointer"
+      transition-all duration-300 hover:shadow-lg hover:-translate-y-3 cursor-pointer"
     >
       <img
         className="bg-gray-300 p-3 rounded-md"
         src={image}
-        alt={product.imageAlt}
-        onError={(e) => (e.currentTarget.src = product.imageFallback)}
+        alt={imageAlt}
+        onError={(e) => (e.currentTarget.src = imageFallback)}
       />
 
       <h1 className="font-semibold">{title}</h1>
