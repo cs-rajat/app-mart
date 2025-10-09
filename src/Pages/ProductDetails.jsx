@@ -32,10 +32,6 @@ const ProductDetails = () => {
     toast.success(`${app.title} installed successfully! 🎉`, {
       position: "top-center",
       autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
       theme: "colored",
     });
   };
@@ -56,7 +52,7 @@ const ProductDetails = () => {
     }));
 
   return (
-    <div className="max-w-11/12 mx-auto py-12 px-6">
+    <div className="md:max-w-11/12 mx-auto py-12 px-6">
       <ToastContainer />
 
       <div className="p-8 rounded-2xl bg-white shadow-sm hover:shadow-md transition-all">

@@ -11,7 +11,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayouts/>,
-    errorElement: <ErrorPage/>,
+    
     hydrateFallbackElement: <p>Loading ...</p>,
     children:[
             {
@@ -31,6 +31,11 @@ const router = createBrowserRouter([
               path: "/installed", 
               Component: InstalledApps,
              },
+             {
+              path: "*",
+              Component: ErrorPage,
+            },
+             
     ]
   },
 //   {
