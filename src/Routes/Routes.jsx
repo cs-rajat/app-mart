@@ -17,7 +17,7 @@ const router = createBrowserRouter([
             {
              index:true,
              Component: Home,
-             loader: ()=> fetch('./appData.json')
+             
             },
              {
               path: "/products",

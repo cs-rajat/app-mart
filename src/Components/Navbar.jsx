@@ -58,7 +58,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn rounded-md bg-gradient-to-tr from-[#632EE3] to-[#9F62F2] text-white"><FaGithub />Contribute</a>
+          <a href="https://github.com/cs-rajat" target="_blank" className="btn rounded-md bg-gradient-to-tr from-[#632EE3] to-[#9F62F2] text-white"><FaGithub />Contribute</a>
         </div>
       </div>
     </div>

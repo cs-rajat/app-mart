@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useProducts from "../hooks/useProducts";
 import { Download, Star, MessageSquare } from "lucide-react";
-import { getInstalledProducts, isProductInstalled, installProduct } from "../utils/localStorageUtils";
+import { isProductInstalled, installProduct } from "../utils/localStorageUtils";
 
 const ProductDetails = () => {
   const { id } = useParams();
