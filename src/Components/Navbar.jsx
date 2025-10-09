@@ -37,7 +37,7 @@ const Navbar = () => {
                 <Link to='/products'>Apps</Link>
               </li>
               <li>
-                <Link>Installation</Link>
+                <Link to="/installed">Installation</Link>
               </li>
             </ul>
           </div>
@@ -53,7 +53,7 @@ const Navbar = () => {
               <Link to='/products'>Apps</Link>
             </li>
             <li>
-              <Link>Installation</Link>
+              <Link to="/installed">Installation</Link>
             </li>
           </ul>
         </div>

@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useProducts from "../hooks/useProducts";
 import { Download, Star, MessageSquare } from "lucide-react";
+import { getInstalledProducts, isProductInstalled, installProduct } from "../utils/localStorageUtils";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const { products } = useProducts();
+  const { loading, error, products } = useProducts()
 
   const app = products.find((p) => p.id.toString() === id);
+
+  const [isInstalled, setIsInstalled] = useState(false);
+
+  
+  useEffect(() => {
+    if (app) setIsInstalled(isProductInstalled(app.id));
+  }, [app]);
+
+
+  const handleInstall = () => {
+    installProduct(app);
+    setIsInstalled(true);
+  };
 
   if (!app) {
     return <p className="text-center py-12">Product not found.</p>;
@@ -18,7 +32,7 @@ const ProductDetails = () => {
   return (
     <div className="max-w-11/12 mx-auto py-12 px-6">
       <div className="p-8 rounded-2xl bg-white shadow-sm hover:shadow-md transition-all">
-        {/* Top section */}
+       
         <div className="flex items-center gap-8 mb-8">
           <img
             src={app.image}
@@ -63,11 +77,21 @@ const ProductDetails = () => {
               </div>
             </div>
 
-            <button className="mt-6 bg-green-600 hover:bg-green-700 text-white text-sm px-5 py-2 rounded-lg shadow">
-              Install Now ({app.size} MB)
+           
+            <button
+              onClick={handleInstall}
+              disabled={isInstalled}
+              className={`mt-6 text-white text-sm px-5 py-2 rounded-lg shadow ${
+                isInstalled
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-green-600 hover:bg-green-700"
+              }`}
+            >
+              {isInstalled ? "Installed" : `Install Now (${app.size} MB)`}
             </button>
           </div>
         </div>
+
         <div className="mb-6">
           <h3 className="text-md font-semibold mb-3">Ratings</h3>
           {app.ratings
@@ -86,6 +110,7 @@ const ProductDetails = () => {
             ))}
         </div>
 
+    
         <p className="text-gray-700 text-sm leading-relaxed">
           {app.description}
         </p>
