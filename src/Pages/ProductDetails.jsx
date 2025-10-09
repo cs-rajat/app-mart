@@ -6,7 +6,7 @@ import { isProductInstalled, installProduct } from "../utils/localStorageUtils";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const { loading, error, products } = useProducts()
+  const {  products } = useProducts()
 
   const app = products.find((p) => p.id.toString() === id);
 
