@@ -3,44 +3,71 @@ import { useParams } from "react-router-dom";
 import useProducts from "../hooks/useProducts";
 import { Download, Star, MessageSquare } from "lucide-react";
 import { isProductInstalled, installProduct } from "../utils/localStorageUtils";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import {
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+} from "recharts";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const {  products } = useProducts()
+  const { products } = useProducts();
 
   const app = products.find((p) => p.id.toString() === id);
 
   const [isInstalled, setIsInstalled] = useState(false);
 
-  
   useEffect(() => {
     if (app) setIsInstalled(isProductInstalled(app.id));
   }, [app]);
 
-
   const handleInstall = () => {
     installProduct(app);
     setIsInstalled(true);
+    toast.success(`${app.title} installed successfully! 🎉`, {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      theme: "colored",
+    });
   };
 
   if (!app) {
     return <p className="text-center py-12">Product not found.</p>;
   }
 
-  const totalRatings = app.ratings.reduce((sum, r) => sum + r.count, 0);
+  const ratingData = [...app.ratings]
+    .sort((a, b) => {
+      const aStar = parseInt(a.name);
+      const bStar = parseInt(b.name);
+      return bStar - aStar;
+    })
+    .map((r) => ({
+      name: r.name,
+      count: r.count,
+    }));
 
   return (
     <div className="max-w-11/12 mx-auto py-12 px-6">
+      <ToastContainer />
+
       <div className="p-8 rounded-2xl bg-white shadow-sm hover:shadow-md transition-all">
-       
-        <div className="flex items-center gap-8 mb-8">
+        <div className="flex flex-col md:flex-row items-center gap-8 mb-8">
           <img
             src={app.image}
             onError={(e) => (e.currentTarget.src = app.imageFallback)}
             alt={app.imageAlt}
             className="w-28 h-28 rounded-2xl bg-gray-50 p-3 shadow"
           />
-          <div>
+          <div className="text-center md:text-left">
             <h2 className="text-xl font-semibold">{app.title}</h2>
             <p className="text-sm text-gray-500 mb-4">
               Developed by{" "}
@@ -49,7 +76,7 @@ const ProductDetails = () => {
               </span>
             </p>
 
-            <div className="flex flex-wrap items-center gap-6 text-gray-700">
+            <div className="flex flex-wrap justify-center md:justify-start items-center gap-6 text-gray-700">
               <div className="flex items-center gap-2">
                 <Download className="w-5 h-5 text-green-600" />
                 <div>
@@ -59,25 +86,26 @@ const ProductDetails = () => {
                   <p className="text-xs text-gray-500">Downloads</p>
                 </div>
               </div>
+
               <div className="flex items-center gap-2">
                 <Star className="w-5 h-5 text-yellow-500" />
                 <div>
                   <p className="font-bold">{app.ratingAvg}</p>
-                  <p className="text-xs text-gray-500">Average Rating</p>
+                  <p className="text-xs text-gray-500">Avg Rating</p>
                 </div>
               </div>
+
               <div className="flex items-center gap-2">
                 <MessageSquare className="w-5 h-5 text-purple-500" />
                 <div>
                   <p className="font-bold">
                     {(app.reviews / 1000).toFixed(0)}K
                   </p>
-                  <p className="text-xs text-gray-500">Total Reviews</p>
+                  <p className="text-xs text-gray-500">Reviews</p>
                 </div>
               </div>
             </div>
 
-           
             <button
               onClick={handleInstall}
               disabled={isInstalled}
@@ -92,25 +120,52 @@ const ProductDetails = () => {
           </div>
         </div>
 
-        <div className="mb-6">
-          <h3 className="text-md font-semibold mb-3">Ratings</h3>
-          {app.ratings
-            .slice()
-            .reverse()
-            .map((rate) => (
-              <div key={rate.name} className="flex items-center mb-2">
-                <span className="w-16 text-sm text-gray-600">{rate.name}</span>
-                <div className="flex-1 bg-gray-200 h-3 rounded-full overflow-hidden">
-                  <div
-                    className="bg-orange-500 h-3"
-                    style={{ width: `${(rate.count / totalRatings) * 100}%` }}
-                  ></div>
-                </div>
-              </div>
-            ))}
+        <div className="mb-8">
+          <h3 className="text-md font-semibold mb-3">Ratings Overview</h3>
+          <div className="bg-gray-50 rounded-xl p-4">
+            <div className="w-full h-56">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart
+                  data={ratingData}
+                  layout="vertical"
+                  margin={{ top: 0, right: 30, left: 0, bottom: 0 }}
+                >
+                  <XAxis
+                    type="number"
+                    domain={[0, Math.max(...ratingData.map((r) => r.count))]}
+                    axisLine={false}
+                    tickLine={false}
+                    tick={{ fill: "#9ca3af", fontSize: 12 }}
+                  />
+                  <YAxis
+                    dataKey="name"
+                    type="category"
+                    axisLine={false}
+                    tickLine={false}
+                    width={60}
+                    tick={{ fill: "#374151", fontSize: 12 }}
+                  />
+                  <Tooltip
+                    cursor={{ fill: "rgba(249, 115, 22, 0.1)" }}
+                    formatter={(value) => [
+                      `${value.toLocaleString()} users`,
+                      "Ratings",
+                    ]}
+                    labelFormatter={(label) => `${label}`}
+                  />
+                  <Bar
+                    dataKey="count"
+                    fill="#ff9900"
+                    barSize={22}
+                    radius={[0, 5, 5, 0]}
+                  />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
         </div>
 
-    
+        <h1 className="font-bold mb-2">Description</h1>
         <p className="text-gray-700 text-sm leading-relaxed">
           {app.description}
         </p>

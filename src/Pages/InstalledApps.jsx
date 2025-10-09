@@ -43,8 +43,9 @@ const InstalledApps = () => {
   }
 
   return (
-    <div className="max-w-5xl mx-auto py-12 px-6 space-y-4">
-      <h2 className="text-2xl font-bold mb-6">Installed Apps</h2>
+    <div className="max-w-11/12 mx-auto py-12 px-6 space-y-4">
+      <h2 className="text-2xl font-bold mb-2 text-center">Installed Apps</h2>
+      <p className="text-center text-gray-500 mb-6">Explore All Trending Apps on the Market developed by us </p>
 
       <div className="flex justify-between items-center mb-4">
         <h1 className="font-bold">

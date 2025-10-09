@@ -28,7 +28,7 @@ const router = createBrowserRouter([
               Component: ProductDetails,
              },
               {
-              path: "/installed", // 🔹 নতুন route
+              path: "/installed", 
               Component: InstalledApps,
              },
     ]

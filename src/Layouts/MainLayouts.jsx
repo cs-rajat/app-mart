@@ -3,6 +3,7 @@ import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import { Outlet, useLocation } from 'react-router-dom';
 import Hero from '../Components/Hero';
+import { ToastContainer } from 'react-toastify';
 
 const MainLayouts = () => {
     const location = useLocation();            
@@ -18,6 +19,7 @@ const MainLayouts = () => {
             </div>
             
             <Footer/>
+            <ToastContainer />
         </div>
     );
 };

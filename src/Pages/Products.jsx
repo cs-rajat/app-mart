@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import useProducts from "../hooks/useProducts";
 import ProductCard from "../Components/ProductCard";
+import errImg from "../assets/App-Error.png"
 
 const Products = () => {
- const { loading, error, products } = useProducts()
+ const { products } = useProducts()
   const [search, setSearch] = useState("");
 
   const term = search.trim().toLocaleLowerCase();
@@ -16,7 +17,7 @@ const Products = () => {
   return (
     <section className="bg-gray-200 min-h-screen">
       <div className="max-w-6xl mx-auto py-10 px-5">
-        {/* Heading */}
+       
         <div className="text-center space-y-2">
           <h1 className="text-4xl font-extrabold">Our All Applications</h1>
           <p className="text-gray-500">
@@ -50,9 +51,10 @@ const Products = () => {
           </div>
         ) : (
           <div className="text-center space-y-7 mt-10">
-            <p className="text-gray-700 font-bold text-4xl md:text-5xl">
+            {/* <p className="text-gray-700 font-bold text-4xl md:text-5xl">
               No App Found
-            </p>
+            </p> */}
+            <img className="mx-auto" src={errImg}></img>
             <button
               className="btn btn-primary px-8 py-3 rounded-lg hover:bg-blue-700 transition"
               onClick={() => setSearch("")} 
