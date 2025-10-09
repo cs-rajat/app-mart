@@ -2,6 +2,8 @@
   {
     "id": 1,
     "image": "https://img.icons8.com/ios-filled/512/task.png",
+    "imageAlt": "TaskMaster Pro icon",
+    "imageFallback": "https://via.placeholder.com/512?text=TaskMaster+Pro",
     "title": "TaskMaster Pro",
     "companyName": "Productive Labs",
     "description": "Boost productivity with smart task management and AI scheduling assistance.",
@@ -19,7 +21,9 @@
   },
   {
     "id": 2,
-    "image": "https://img.icons8.com/ios-filled/512/fitness-app.png",
+    "image": "https://img.icons8.com/ios-filled/100/heart-with-pulse.png",
+    "imageAlt": "FitTrack Daily icon",
+    "imageFallback": "https://via.placeholder.com/512?text=FitTrack+Daily",
     "title": "FitTrack Daily",
     "companyName": "HealthCore Inc.",
     "description": "Track workouts, calories, and goals with real-time analytics and progress charts.",
@@ -38,6 +42,8 @@
   {
     "id": 3,
     "image": "https://img.icons8.com/ios-filled/512/note.png",
+    "imageAlt": "NoteVerse icon",
+    "imageFallback": "https://via.placeholder.com/512?text=NoteVerse",
     "title": "NoteVerse",
     "companyName": "Syncify Studio",
     "description": "Your all-in-one note-taking app with instant cloud sync and markdown support.",
@@ -56,6 +62,8 @@
   {
     "id": 4,
     "image": "https://img.icons8.com/ios-filled/512/camera.png",
+    "imageAlt": "PhotoSpark icon",
+    "imageFallback": "https://via.placeholder.com/512?text=PhotoSpark",
     "title": "PhotoSpark",
     "companyName": "PixelEdge Media",
     "description": "Edit and enhance your photos with pro filters, effects, and background remover.",
@@ -74,6 +82,8 @@
   {
     "id": 5,
     "image": "https://img.icons8.com/ios-filled/512/wallet.png",
+    "imageAlt": "FinMate icon",
+    "imageFallback": "https://via.placeholder.com/512?text=FinMate",
     "title": "FinMate",
     "companyName": "SmartLedger Co.",
     "description": "Manage your expenses, savings, and budgets with AI-powered insights.",
@@ -92,6 +102,8 @@
   {
     "id": 6,
     "image": "https://img.icons8.com/ios-filled/512/language.png",
+    "imageAlt": "LangLearn icon",
+    "imageFallback": "https://via.placeholder.com/512?text=LangLearn",
     "title": "LangLearn",
     "companyName": "EduWorld",
     "description": "Learn languages with fun lessons, AI chat, and real pronunciation practice.",
@@ -110,6 +122,8 @@
   {
     "id": 7,
     "image": "https://img.icons8.com/ios-filled/512/news.png",
+    "imageAlt": "NewsToday icon",
+    "imageFallback": "https://via.placeholder.com/512?text=NewsToday",
     "title": "NewsToday",
     "companyName": "MediaCore",
     "description": "Stay updated with trending stories, real-time news, and personalized feeds.",
@@ -128,6 +142,8 @@
   {
     "id": 8,
     "image": "https://img.icons8.com/ios-filled/512/music.png",
+    "imageAlt": "MusicVibe icon",
+    "imageFallback": "https://via.placeholder.com/512?text=MusicVibe",
     "title": "MusicVibe",
     "companyName": "Harmony Works",
     "description": "Stream your favorite songs, create playlists, and discover new artists daily.",
@@ -146,6 +162,8 @@
   {
     "id": 9,
     "image": "https://img.icons8.com/ios-filled/512/shopping-cart.png",
+    "imageAlt": "QuickShop icon",
+    "imageFallback": "https://via.placeholder.com/512?text=QuickShop",
     "title": "QuickShop",
     "companyName": "BuyNow Ltd.",
     "description": "Shop the latest trends with fast delivery, secure payments, and exclusive deals.",
@@ -163,7 +181,9 @@
   },
   {
     "id": 10,
-    "image": "https://img.icons8.com/ios-filled/512/meditation.png",
+    "image": "https://img.icons8.com/ios-filled/100/relax.png",
+    "imageAlt": "MindEase icon",
+    "imageFallback": "https://via.placeholder.com/512?text=MindEase",
     "title": "MindEase",
     "companyName": "PeaceTech",
     "description": "Relax and reduce stress with guided meditations, sleep sounds, and breathing tools.",
@@ -182,6 +202,8 @@
   {
     "id": 11,
     "image": "https://img.icons8.com/ios-filled/512/code.png",
+    "imageAlt": "CodeBuddy icon",
+    "imageFallback": "https://via.placeholder.com/512?text=CodeBuddy",
     "title": "CodeBuddy",
     "companyName": "DevLab Studio",
     "description": "Learn coding through interactive projects, quizzes, and real-world examples.",
@@ -200,6 +222,8 @@
   {
     "id": 12,
     "image": "https://img.icons8.com/ios-filled/512/food.png",
+    "imageAlt": "Foodify icon",
+    "imageFallback": "https://via.placeholder.com/512?text=Foodify",
     "title": "Foodify",
     "companyName": "TasteTech",
     "description": "Order food from your favorite restaurants and track deliveries in real-time.",
@@ -213,6 +237,26 @@
       { "name": "3 star", "count": 19220 },
       { "name": "4 star", "count": 48000 },
       { "name": "5 star", "count": 133200 }
+    ]
+  },
+  {
+    "id": 13,
+    "image": "https://img.icons8.com/ios-filled/512/forest.png",
+    "imageAlt": "Forest: Focus for Productivity icon",
+    "imageFallback": "https://via.placeholder.com/512?text=Forest",
+    "title": "Forest: Focus for Productivity",
+    "companyName": "TreeHouse Apps",
+    "description": "Stay focused with a gamified Pomodoro timer — plant trees, earn rewards, and minimise distractions.",
+    "size": 26,
+    "reviews": 54000,
+    "ratingAvg": 4.6,
+    "downloads": 2300000,
+    "ratings": [
+      { "name": "1 star", "count": 800 },
+      { "name": "2 star", "count": 1200 },
+      { "name": "3 star", "count": 4200 },
+      { "name": "4 star", "count": 12000 },
+      { "name": "5 star", "count": 36000 }
     ]
   }
 ]
