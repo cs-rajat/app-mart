@@ -24,7 +24,7 @@ const Home = () => {
             </div>
               <div className='text-center pt-10'>
                 <Link className='btn btn-outline  bg-gradient-to-tr from-[#632EE3] to-[#9F62F2] text-white' to='/products'>
-                 See More
+                 Show All
                 </Link>
               </div>
         </div>
