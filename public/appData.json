@@ -246,7 +246,7 @@
     "imageFallback": "https://via.placeholder.com/512?text=Forest",
     "title": "Forest: Focus for Productivity",
     "companyName": "TreeHouse Apps",
-    "description": "Stay focused with a gamified Pomodoro timer — plant trees, earn rewards, and minimise distractions.",
+    "description": "Stay focused with a gamified Pomodoro timer — plant trees, earn rewards, and minimize distractions.",
     "size": 26,
     "reviews": 54000,
     "ratingAvg": 4.6,
@@ -257,6 +257,146 @@
       { "name": "3 star", "count": 4200 },
       { "name": "4 star", "count": 12000 },
       { "name": "5 star", "count": 36000 }
+    ]
+  },
+{
+  "id": 14,
+  "image": "https://img.icons8.com/ios-filled/512/movie.png",
+  "imageAlt": "MovieFlix icon",
+  "imageFallback": "https://via.placeholder.com/512?text=MovieFlix",
+  "title": "MovieFlix",
+  "companyName": "StreamWave",
+  "description": "Watch movies and TV shows online with subtitles and offline mode support.",
+  "size": 120,
+  "reviews": 300000,
+  "ratingAvg": 4.8,
+  "downloads": 15000000,
+  "ratings": [
+    { "name": "1 star", "count": 7000 },
+    { "name": "2 star", "count": 10000 },
+    { "name": "3 star", "count": 35000 },
+    { "name": "4 star", "count": 90000 },
+    { "name": "5 star", "count": 570000 }
+  ]
+},
+  {
+    "id": 15,
+    "image": "https://img.icons8.com/ios-filled/512/airplane-take-off.png",
+    "imageAlt": "TripPlanner icon",
+    "imageFallback": "https://via.placeholder.com/512?text=TripPlanner",
+    "title": "TripPlanner",
+    "companyName": "GlobeTrotters",
+    "description": "Plan trips, book flights, hotels, and explore local attractions easily.",
+    "size": 65,
+    "reviews": 85000,
+    "ratingAvg": 4.5,
+    "downloads": 4200000,
+    "ratings": [
+      { "name": "1 star", "count": 2000 },
+      { "name": "2 star", "count": 2800 },
+      { "name": "3 star", "count": 10000 },
+      { "name": "4 star", "count": 23000 },
+      { "name": "5 star", "count": 50200 }
+    ]
+  },
+  {
+  "id": 16,
+  "image": "https://img.icons8.com/ios-filled/512/partly-cloudy-day.png",
+  "imageAlt": "WeatherNow icon",
+  "imageFallback": "https://via.placeholder.com/512?text=WeatherNow",
+  "title": "WeatherNow",
+  "companyName": "ClimaTech",
+  "description": "Get accurate weather forecasts, alerts, and live radar updates.",
+  "size": 50,
+  "reviews": 110000,
+  "ratingAvg": 4.4,
+  "downloads": 7500000,
+  "ratings": [
+    { "name": "1 star", "count": 3000 },
+    { "name": "2 star", "count": 4200 },
+    { "name": "3 star", "count": 12000 },
+    { "name": "4 star", "count": 28000 },
+    { "name": "5 star", "count": 57000 }
+  ]
+},
+  {
+    "id": 17,
+    "image": "https://img.icons8.com/ios-filled/512/calendar.png",
+    "imageAlt": "SchedulEase icon",
+    "imageFallback": "https://via.placeholder.com/512?text=SchedulEase",
+    "title": "SchedulEase",
+    "companyName": "TimeTrackers",
+    "description": "Organize meetings, appointments, and reminders with smart AI suggestions.",
+    "size": 34,
+    "reviews": 67000,
+    "ratingAvg": 4.6,
+    "downloads": 2300000,
+    "ratings": [
+      { "name": "1 star", "count": 900 },
+      { "name": "2 star", "count": 1500 },
+      { "name": "3 star", "count": 5000 },
+      { "name": "4 star", "count": 15000 },
+      { "name": "5 star", "count": 42000 }
+    ]
+  },
+  {
+    "id": 18,
+    "image": "https://img.icons8.com/ios-filled/512/sleeping.png",
+    "imageAlt": "SleepWell icon",
+    "imageFallback": "https://via.placeholder.com/512?text=SleepWell",
+    "title": "SleepWell",
+    "companyName": "HealthWave",
+    "description": "Track sleep patterns and improve rest with guided routines and sounds.",
+    "size": 44,
+    "reviews": 98000,
+    "ratingAvg": 4.5,
+    "downloads": 4100000,
+    "ratings": [
+      { "name": "1 star", "count": 1800 },
+      { "name": "2 star", "count": 2500 },
+      { "name": "3 star", "count": 9000 },
+      { "name": "4 star", "count": 25000 },
+      { "name": "5 star", "count": 42200 }
+    ]
+  },
+  {
+    "id": 19,
+    "image": "https://img.icons8.com/ios-filled/512/paint-brush.png",
+    "imageAlt": "ArtMaster icon",
+    "imageFallback": "https://via.placeholder.com/512?text=ArtMaster",
+    "title": "ArtMaster",
+    "companyName": "CreativeLabs",
+    "description": "Draw, paint, and create digital artwork with advanced brushes and layers.",
+    "size": 75,
+    "reviews": 123000,
+    "ratingAvg": 4.7,
+    "downloads": 5600000,
+    "ratings": [
+      { "name": "1 star", "count": 2200 },
+      { "name": "2 star", "count": 3500 },
+      { "name": "3 star", "count": 11000 },
+      { "name": "4 star", "count": 33000 },
+      { "name": "5 star", "count": 72000 }
+    ]
+  },
+  {
+    "id": 20,
+    "image": "https://img.icons8.com/ios-filled/512/rocket.png",
+    "imageAlt": "LaunchPad icon",
+    "imageFallback": "https://via.placeholder.com/512?text=LaunchPad",
+    "title": "LaunchPad",
+    "companyName": "InnovateX",
+    "description": "Manage projects, track progress, and collaborate with teams efficiently.",
+    "size": 60,
+    "reviews": 145000,
+    "ratingAvg": 4.8,
+    "downloads": 9800000,
+    "ratings": [
+      { "name": "1 star", "count": 3500 },
+      { "name": "2 star", "count": 4800 },
+      { "name": "3 star", "count": 14000 },
+      { "name": "4 star", "count": 42000 },
+      { "name": "5 star", "count": 92000 }
     ]
   }
 ]

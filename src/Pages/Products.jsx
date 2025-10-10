@@ -1,23 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useProducts from "../hooks/useProducts";
 import ProductCard from "../Components/ProductCard";
-import errImg from "../assets/App-Error.png"
+import errImg from "../assets/App-Error.png";
+import Spinner from "../Components/Spinner";
 
 const Products = () => {
- const { products } = useProducts()
+  const { products, loading: initialLoading } = useProducts();
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(initialLoading); 
 
-  const term = search.trim().toLocaleLowerCase();
+  const term = search.trim().toLowerCase();
   const searchedProducts = term
     ? products.filter((product) =>
-        product.title.toLocaleLowerCase().includes(term)
+        product.title.toLowerCase().includes(term)
       )
     : products;
+
+ 
+  useEffect(() => {
+    if (!initialLoading) {
+      setLoading(true);
+      const timer = setTimeout(() => {
+        setLoading(false);
+      }, 300); 
+      return () => clearTimeout(timer);
+    }
+  }, [search, initialLoading]);
 
   return (
     <section className="bg-gray-200 min-h-screen">
       <div className="max-w-6xl mx-auto py-10 px-5">
-       
         <div className="text-center space-y-2">
           <h1 className="text-4xl font-extrabold">Our All Applications</h1>
           <p className="text-gray-500">
@@ -25,7 +37,6 @@ const Products = () => {
           </p>
         </div>
 
-        
         <div className="md:flex flex-col md:flex-row space-y-2 md:space-y-0 justify-between py-5 items-center">
           <h1 className="text-3xl font-semibold">
             All Apps{" "}
@@ -42,8 +53,11 @@ const Products = () => {
           />
         </div>
 
-      
-        {searchedProducts.length > 0 ? (
+        {loading ? (
+          <div className="flex justify-center items-center mt-20">
+            <Spinner />
+          </div>
+        ) : searchedProducts.length > 0 ? (
           <div className="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-10 mt-10">
             {searchedProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
@@ -51,13 +65,10 @@ const Products = () => {
           </div>
         ) : (
           <div className="text-center space-y-7 mt-10">
-            {/* <p className="text-gray-700 font-bold text-4xl md:text-5xl">
-              No App Found
-            </p> */}
-            <img className="mx-auto" src={errImg}></img>
+            <img className="mx-auto" src={errImg} alt="No apps found" />
             <button
               className="btn btn-primary px-8 py-3 rounded-lg hover:bg-blue-700 transition"
-              onClick={() => setSearch("")} 
+              onClick={() => setSearch("")}
             >
               Show All Apps
             </button>

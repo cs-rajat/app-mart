@@ -10,7 +10,8 @@ const ProductCard = ({ product }) => {
     navigate(`/product/${product.id}`);
   };
 
-  const { title, image, downloads, ratingAvg, imageAlt, imageFallback } = product;
+  const { title, image, downloads, ratingAvg, imageAlt, imageFallback } =
+    product;
 
   const formatDownloads = (num) => {
     if (num >= 1_000_000) {

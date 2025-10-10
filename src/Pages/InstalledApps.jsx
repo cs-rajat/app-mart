@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
-import {
-  getInstalledProducts,
-  uninstallProduct,
-} from "../utils/localStorageUtils";
+import { getInstalledProducts, uninstallProduct } from "../utils/localStorageUtils";
 import { Link } from "react-router-dom";
+import imgEr from "../assets/App-Error.png";
+import Spinner from "../Components/Spinner"; 
 
 const InstalledApps = () => {
   const [installed, setInstalled] = useState([]);
-  const [sortAsc, setSortAsc] = useState(true); 
+  const [sortAsc, setSortAsc] = useState(true);
+  const [loading, setLoading] = useState(true); 
 
   const loadInstalled = () => {
-    const apps = getInstalledProducts();
-    setInstalled(apps);
+    setLoading(true);
+    setTimeout(() => {
+      const apps = getInstalledProducts();
+      setInstalled(apps);
+      setLoading(false);
+    }, 300); 
   };
 
   useEffect(() => {
@@ -23,7 +27,6 @@ const InstalledApps = () => {
     loadInstalled();
   };
 
- 
   const handleSortBySize = () => {
     const sorted = [...installed].sort((a, b) => {
       const sizeA = parseFloat(a.size) || 0;
@@ -31,13 +34,21 @@ const InstalledApps = () => {
       return sortAsc ? sizeA - sizeB : sizeB - sizeA;
     });
     setInstalled(sorted);
-    setSortAsc(!sortAsc); // toggle direction
+    setSortAsc(!sortAsc);
   };
 
-  if (installed.length === 0) {
+  if (loading) {
     return (
-      <div className="text-center py-12 text-gray-500">
-        No installed apps yet.
+      <div className="flex justify-center items-center py-20">
+        <Spinner />
+      </div>
+    );
+  }
+
+  if (!loading && installed.length === 0) {
+    return (
+      <div className="flex justify-center items-center py-10">
+        <img src={imgEr} alt="No apps installed" />
       </div>
     );
   }
@@ -45,7 +56,9 @@ const InstalledApps = () => {
   return (
     <div className="md:max-w-11/12 mx-auto py-12 px-6 space-y-4">
       <h2 className="text-2xl font-bold mb-2 text-center">Installed Apps</h2>
-      <p className="text-center text-gray-500 mb-6">Explore All Trending Apps on the Market developed by us </p>
+      <p className="text-center text-gray-500 mb-6">
+        Explore All Trending Apps on the Market developed by us
+      </p>
 
       <div className="flex justify-between items-center mb-4">
         <h1 className="font-bold">
@@ -53,7 +66,7 @@ const InstalledApps = () => {
         </h1>
         <button
           onClick={handleSortBySize}
-          className="btn  text-sm transition"
+          className="btn text-sm transition hover:bg-gray-200"
         >
           Sort by Size {sortAsc ? "↑" : "↓"}
         </button>

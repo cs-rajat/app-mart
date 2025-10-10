@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useProducts from "../hooks/useProducts";
 import { Download, Star, MessageSquare } from "lucide-react";
 import { isProductInstalled, installProduct } from "../utils/localStorageUtils";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-} from "recharts";
+import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip } from "recharts";
+import imgEr from "../assets/App-Error.png";
+import Spinner from "../Components/Spinner";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const { products } = useProducts();
-
-  const app = products.find((p) => p.id.toString() === id);
-
+  const { products, loading: productsLoading } = useProducts(); // Assuming your hook has loading state
   const [isInstalled, setIsInstalled] = useState(false);
 
+  const [loading, setLoading] = useState(true); // Local loading state for this page
+  const [app, setApp] = useState(null);
+
   useEffect(() => {
-    if (app) setIsInstalled(isProductInstalled(app.id));
-  }, [app]);
+    if (!productsLoading) {
+      const foundApp = products.find((p) => p.id.toString() === id);
+      setApp(foundApp);
+      if (foundApp) setIsInstalled(isProductInstalled(foundApp.id));
+      setLoading(false);
+    }
+  }, [products, productsLoading, id]);
 
   const handleInstall = () => {
     installProduct(app);
@@ -36,16 +36,24 @@ const ProductDetails = () => {
     });
   };
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center py-20">
+        <Spinner />
+      </div>
+    );
+  }
+
   if (!app) {
-    return <p className="text-center py-12">Product not found.</p>;
+    return (
+      <div className="flex justify-center items-center py-20">
+        <img src={imgEr} alt="App not found" />
+      </div>
+    );
   }
 
   const ratingData = [...app.ratings]
-    .sort((a, b) => {
-      const aStar = parseInt(a.name);
-      const bStar = parseInt(b.name);
-      return bStar - aStar;
-    })
+    .sort((a, b) => parseInt(b.name) - parseInt(a.name))
     .map((r) => ({
       name: r.name,
       count: r.count,
@@ -59,26 +67,21 @@ const ProductDetails = () => {
         <div className="flex flex-col md:flex-row items-center gap-8 mb-8">
           <img
             src={app.image}
-            onError={(e) => (e.currentTarget.src = app.imageFallback)}
-            alt={app.imageAlt}
+            alt={app.title}
             className="w-28 h-28 rounded-2xl bg-gray-50 p-3 shadow"
           />
           <div className="text-center md:text-left">
             <h2 className="text-xl font-semibold">{app.title}</h2>
             <p className="text-sm text-gray-500 mb-4">
               Developed by{" "}
-              <span className="text-indigo-600 font-medium">
-                {app.companyName}
-              </span>
+              <span className="text-indigo-600 font-medium">{app.companyName}</span>
             </p>
 
             <div className="flex flex-wrap justify-center md:justify-start items-center gap-6 text-gray-700">
               <div className="flex items-center gap-2">
                 <Download className="w-5 h-5 text-green-600" />
                 <div>
-                  <p className="font-bold">
-                    {(app.downloads / 1000000).toFixed(1)}M
-                  </p>
+                  <p className="font-bold">{(app.downloads / 1000000).toFixed(1)}M</p>
                   <p className="text-xs text-gray-500">Downloads</p>
                 </div>
               </div>
@@ -94,9 +97,7 @@ const ProductDetails = () => {
               <div className="flex items-center gap-2">
                 <MessageSquare className="w-5 h-5 text-purple-500" />
                 <div>
-                  <p className="font-bold">
-                    {(app.reviews / 1000).toFixed(0)}K
-                  </p>
+                  <p className="font-bold">{(app.reviews / 1000).toFixed(0)}K</p>
                   <p className="text-xs text-gray-500">Reviews</p>
                 </div>
               </div>
@@ -106,9 +107,7 @@ const ProductDetails = () => {
               onClick={handleInstall}
               disabled={isInstalled}
               className={`mt-6 text-white text-sm px-5 py-2 rounded-lg shadow ${
-                isInstalled
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-green-600 hover:bg-green-700"
+                isInstalled ? "bg-gray-400 cursor-not-allowed" : "bg-green-600 hover:bg-green-700"
               }`}
             >
               {isInstalled ? "Installed" : `Install Now (${app.size} MB)`}
@@ -143,18 +142,10 @@ const ProductDetails = () => {
                   />
                   <Tooltip
                     cursor={{ fill: "rgba(249, 115, 22, 0.1)" }}
-                    formatter={(value) => [
-                      `${value.toLocaleString()} users`,
-                      "Ratings",
-                    ]}
+                    formatter={(value) => [`${value.toLocaleString()} users`, "Ratings"]}
                     labelFormatter={(label) => `${label}`}
                   />
-                  <Bar
-                    dataKey="count"
-                    fill="#ff9900"
-                    barSize={22}
-                    radius={[0, 5, 5, 0]}
-                  />
+                  <Bar dataKey="count" fill="#ff9900" barSize={22} radius={[0, 5, 5, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -162,9 +153,7 @@ const ProductDetails = () => {
         </div>
 
         <h1 className="font-bold mb-2">Description</h1>
-        <p className="text-gray-700 text-sm leading-relaxed">
-          {app.description}
-        </p>
+        <p className="text-gray-700 text-sm leading-relaxed">{app.description}</p>
       </div>
     </div>
   );
