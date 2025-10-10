@@ -8,13 +8,13 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import imgEr from "../assets/App-Error.png";
 import Spinner from "../Components/Spinner";
+import { Download, Star, HardDrive } from "lucide-react"; // ✅ icons
 
 const MyInstallation = () => {
   const [installed, setInstalled] = useState([]);
   const [sortAsc, setSortAsc] = useState(true);
   const [loading, setLoading] = useState(true);
 
-  
   const loadInstalled = () => {
     setLoading(true);
     setTimeout(() => {
@@ -28,7 +28,6 @@ const MyInstallation = () => {
     loadInstalled();
   }, []);
 
-  
   const handleUninstall = (app) => {
     uninstallProduct(app.id);
     toast.success(`${app.title} uninstalled successfully! 🎉`, {
@@ -39,7 +38,15 @@ const MyInstallation = () => {
     loadInstalled();
   };
 
-  
+  // ✅ Format downloads (e.g., 1.2M or 800K)
+  const formatDownloads = (count) => {
+    if (!count) return "0";
+    const num = parseInt(count);
+    if (num >= 1_000_000) return (num / 1_000_000).toFixed(1) + "M";
+    if (num >= 1_000) return (num / 1_000).toFixed(1) + "K";
+    return num.toString();
+  };
+
   const handleSortByDownloads = () => {
     const sorted = [...installed].sort((a, b) => {
       const countA = parseInt(a.downloads) || 0;
@@ -90,8 +97,9 @@ const MyInstallation = () => {
           {installed.map((app) => (
             <div
               key={app.id}
-              className="flex justify-between items-center bg-white p-4 rounded-xl shadow hover:shadow-md transition"
+              className="flex justify-between items-center bg-white p-4 rounded-xl shadow hover:shadow-md transition transform hover:scale-[1.01]"
             >
+              {/* Left side */}
               <div className="flex items-center gap-4">
                 <img
                   src={app.image}
@@ -99,13 +107,39 @@ const MyInstallation = () => {
                   className="w-12 h-12 rounded-md bg-gray-100"
                 />
                 <div>
-                  <h3 className="font-semibold">{app.title}</h3>
-                  <p className="text-sm text-gray-500">
-                    Downloads: {app.downloads?.toLocaleString() || 0}
-                  </p>
+                  <h3 className="font-semibold text-lg">{app.title}</h3>
+
+                  {/* Info row */}
+                  <div className="flex items-center gap-4 text-sm text-gray-600 mt-1">
+                    {/* Downloads */}
+                    <div className="flex items-center gap-1">
+                      <Download size={16} className="text-blue-500" />
+                      <span>{formatDownloads(app.downloads)}</span>
+                    </div>
+
+                    {/* Rating */}
+                    {app.ratingAvg && (
+                      <div className="flex items-center gap-1">
+                        <Star
+                          size={16}
+                          className="text-yellow-400 fill-yellow-400"
+                        />
+                        <span>{app.ratingAvg.toFixed(1)}</span>
+                      </div>
+                    )}
+
+                    {/* Size */}
+                    {app.size && (
+                      <div className="flex items-center gap-1">
+                        <HardDrive size={16} className="text-gray-500" />
+                        <span>{app.size} MB</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
 
+              {/* Right side buttons */}
               <div className="flex items-center gap-4">
                 <Link
                   to={`/product/${app.id}`}

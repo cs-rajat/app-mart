@@ -117,7 +117,7 @@ const ProductDetails = () => {
         </div>
 
         <div className="mb-8">
-          <h3 className="text-md font-semibold mb-3">Ratings Overview</h3>
+          <h3 className="text-md font-semibold mb-3">Ratings</h3>
           <div className="bg-gray-50 rounded-xl p-4">
             <div className="w-full h-56">
               <ResponsiveContainer width="100%" height="100%">
