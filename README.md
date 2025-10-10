@@ -20,13 +20,13 @@ It includes features like sorting by downloads or size, uninstalling apps, loadi
 
 | Stack | Technology |
 |-------|-------------|
-| 💻 Frontend | **React.js (Vite)** |
-| 🎨 Styling | **Tailwind CSS** |
-| ⚙️ State Management | **React Hooks (useState, useEffect)** |
-| 🔔 Notifications | **React Toastify** |
-| 🧩 Routing | **React Router DOM** |
-| 💾 Data Storage | **localStorage** |
-| 🌀 Loading Spinner | Custom React Component |
+| Frontend | **React.js (Vite)** |
+| Styling | **Tailwind CSS** |
+| State Management | **React Hooks (useState, useEffect)** |
+| Notifications | **React Toastify** |
+| Routing | **React Router DOM** |
+| Data Storage | **localStorage** |
+| Loading Spinner | Custom React Component |
 
 ---
 
