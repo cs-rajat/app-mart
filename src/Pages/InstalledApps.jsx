@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { getInstalledProducts, uninstallProduct } from "../utils/localStorageUtils";
+import {
+  getInstalledProducts,
+  uninstallProduct,
+} from "../utils/localStorageUtils";
 import { Link } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import imgEr from "../assets/App-Error.png";
-import Spinner from "../Components/Spinner"; 
+import Spinner from "../Components/Spinner";
 
 const InstalledApps = () => {
   const [installed, setInstalled] = useState([]);
   const [sortAsc, setSortAsc] = useState(true);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
 
   const loadInstalled = () => {
     setLoading(true);
@@ -15,15 +20,20 @@ const InstalledApps = () => {
       const apps = getInstalledProducts();
       setInstalled(apps);
       setLoading(false);
-    }, 300); 
+    }, 300);
   };
 
   useEffect(() => {
     loadInstalled();
   }, []);
 
-  const handleUninstall = (id) => {
-    uninstallProduct(id);
+  const handleUninstall = (app) => {
+    uninstallProduct(app.id);
+    toast.success(`${app.title} uninstalled successfully! 🎉`, {
+      position: "top-center",
+      autoClose: 2000,
+      theme: "colored",
+    });
     loadInstalled();
   };
 
@@ -37,75 +47,79 @@ const InstalledApps = () => {
     setSortAsc(!sortAsc);
   };
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center py-20">
-        <Spinner />
-      </div>
-    );
-  }
-
-  if (!loading && installed.length === 0) {
-    return (
-      <div className="flex justify-center items-center py-10">
-        <img src={imgEr} alt="No apps installed" />
-      </div>
-    );
-  }
-
   return (
-    <div className="md:max-w-11/12 mx-auto py-12 px-6 space-y-4">
-      <h2 className="text-2xl font-bold mb-2 text-center">Installed Apps</h2>
-      <p className="text-center text-gray-500 mb-6">
-        Explore All Trending Apps on the Market developed by us
-      </p>
+    <>
+      <ToastContainer />
 
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="font-bold">
-          <span>{installed.length}</span> App Found
-        </h1>
-        <button
-          onClick={handleSortBySize}
-          className="btn text-sm transition hover:bg-gray-200"
-        >
-          Sort by Size {sortAsc ? "↑" : "↓"}
-        </button>
-      </div>
+      {loading ? (
+        <div className="flex justify-center items-center py-20">
+          <Spinner />
+        </div>
+      ) : installed.length === 0 ? (
+        <div className="flex flex-col justify-center items-center py-10 gap-3">
+          <img src={imgEr} alt="No apps installed" />
+          <Link to="/products" className="btn btn-primary">
+            Browse Apps
+          </Link>
+        </div>
+      ) : (
+        <div className="md:max-w-11/12 mx-auto py-12 px-6 space-y-4">
+          <h2 className="text-2xl font-bold mb-2 text-center">
+            Installed Apps
+          </h2>
+          <p className="text-center text-gray-500 mb-6">
+            Explore All Trending Apps on the Market developed by us
+          </p>
 
-      {installed.map((app) => (
-        <div
-          key={app.id}
-          className="flex justify-between items-center bg-white p-4 rounded-xl shadow hover:shadow-md transition"
-        >
-          <div className="flex items-center gap-4">
-            <img
-              src={app.image}
-              alt={app.title}
-              className="w-12 h-12 rounded-md bg-gray-100"
-            />
-            <div>
-              <h3 className="font-semibold">{app.title}</h3>
-              <p className="text-sm text-gray-500">{app.size} MB</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <Link
-              to={`/product/${app.id}`}
-              className="text-blue-600 hover:underline text-sm"
-            >
-              Details
-            </Link>
+          <div className="flex justify-between items-center mb-4">
+            <h1 className="font-bold">
+              <span>{installed.length}</span> App
+              {installed.length > 1 ? "s" : ""} Found
+            </h1>
             <button
-              onClick={() => handleUninstall(app.id)}
-              className="bg-green-500 hover:bg-green-600 text-white text-sm px-3 py-1 rounded"
+              onClick={handleSortBySize}
+              className="btn text-sm transition hover:bg-gray-200"
             >
-              Uninstall
+              Sort by Size {sortAsc ? "↑" : "↓"}
             </button>
           </div>
+
+          {installed.map((app) => (
+            <div
+              key={app.id}
+              className="flex justify-between items-center bg-white p-4 rounded-xl shadow hover:shadow-md transition"
+            >
+              <div className="flex items-center gap-4">
+                <img
+                  src={app.image}
+                  alt={app.title}
+                  className="w-12 h-12 rounded-md bg-gray-100"
+                />
+                <div>
+                  <h3 className="font-semibold">{app.title}</h3>
+                  <p className="text-sm text-gray-500">{app.size} MB</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <Link
+                  to={`/product/${app.id}`}
+                  className="text-blue-600 hover:underline text-sm"
+                >
+                  Details
+                </Link>
+                <button
+                  onClick={() => handleUninstall(app)}
+                  className="bg-green-500 hover:bg-green-600 text-white text-sm px-3 py-1 rounded"
+                >
+                  Uninstall
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      )}
+    </>
   );
 };
 

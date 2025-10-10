@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useProducts from "../hooks/useProducts";
 import { Download, Star, MessageSquare } from "lucide-react";
 import { isProductInstalled, installProduct } from "../utils/localStorageUtils";
@@ -11,10 +11,10 @@ import Spinner from "../Components/Spinner";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const { products, loading: productsLoading } = useProducts(); // Assuming your hook has loading state
+  const { products, loading: productsLoading } = useProducts(); 
   const [isInstalled, setIsInstalled] = useState(false);
 
-  const [loading, setLoading] = useState(true); // Local loading state for this page
+  const [loading, setLoading] = useState(true); 
   const [app, setApp] = useState(null);
 
   useEffect(() => {
@@ -46,8 +46,9 @@ const ProductDetails = () => {
 
   if (!app) {
     return (
-      <div className="flex justify-center items-center py-20">
+      <div className="flex flex-col justify-center items-center gap-3 py-20">
         <img src={imgEr} alt="App not found" />
+        <Link to='/' className="btn btn-primary">Back To Home</Link>
       </div>
     );
   }
