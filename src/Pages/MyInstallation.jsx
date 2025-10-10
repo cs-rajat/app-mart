@@ -38,7 +38,6 @@ const MyInstallation = () => {
     loadInstalled();
   };
 
-  // ✅ Format downloads (e.g., 1.2M or 800K)
   const formatDownloads = (count) => {
     if (!count) return "0";
     const num = parseInt(count);
@@ -109,7 +108,6 @@ const MyInstallation = () => {
                 <div>
                   <h3 className="font-semibold text-lg">{app.title}</h3>
 
-                  {/* Info row */}
                   <div className="flex items-center gap-4 text-sm text-gray-600 mt-1">
                     {/* Downloads */}
                     <div className="flex items-center gap-1">
@@ -128,7 +126,6 @@ const MyInstallation = () => {
                       </div>
                     )}
 
-                    {/* Size */}
                     {app.size && (
                       <div className="flex items-center gap-1">
                         <HardDrive size={16} className="text-gray-500" />
@@ -139,7 +136,6 @@ const MyInstallation = () => {
                 </div>
               </div>
 
-              {/* Right side buttons */}
               <div className="flex items-center gap-4">
                 <Link
                   to={`/product/${app.id}`}
