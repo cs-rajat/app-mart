@@ -14,6 +14,7 @@ const MyInstallation = () => {
   const [sortAsc, setSortAsc] = useState(true);
   const [loading, setLoading] = useState(true);
 
+  
   const loadInstalled = () => {
     setLoading(true);
     setTimeout(() => {
@@ -27,6 +28,7 @@ const MyInstallation = () => {
     loadInstalled();
   }, []);
 
+  
   const handleUninstall = (app) => {
     uninstallProduct(app.id);
     toast.success(`${app.title} uninstalled successfully! 🎉`, {
@@ -37,11 +39,12 @@ const MyInstallation = () => {
     loadInstalled();
   };
 
-  const handleSortBySize = () => {
+  
+  const handleSortByDownloads = () => {
     const sorted = [...installed].sort((a, b) => {
-      const sizeA = parseFloat(a.size) || 0;
-      const sizeB = parseFloat(b.size) || 0;
-      return sortAsc ? sizeA - sizeB : sizeB - sizeA;
+      const countA = parseInt(a.downloads) || 0;
+      const countB = parseInt(b.downloads) || 0;
+      return sortAsc ? countA - countB : countB - countA;
     });
     setInstalled(sorted);
     setSortAsc(!sortAsc);
@@ -77,10 +80,10 @@ const MyInstallation = () => {
               {installed.length > 1 ? "s" : ""} Found
             </h1>
             <button
-              onClick={handleSortBySize}
+              onClick={handleSortByDownloads}
               className="btn text-sm transition hover:bg-gray-200"
             >
-              Sort by Size {sortAsc ? "↑" : "↓"}
+              Sort by Downloads {sortAsc ? "↑" : "↓"}
             </button>
           </div>
 
@@ -97,7 +100,9 @@ const MyInstallation = () => {
                 />
                 <div>
                   <h3 className="font-semibold">{app.title}</h3>
-                  <p className="text-sm text-gray-500">{app.size} MB</p>
+                  <p className="text-sm text-gray-500">
+                    Downloads: {app.downloads?.toLocaleString() || 0}
+                  </p>
                 </div>
               </div>
 

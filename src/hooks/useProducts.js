@@ -9,7 +9,7 @@ const useProducts = () => {
   useEffect(() => {
     setLoading(true);
 
-    axios("./appData.json")
+    axios("/appData.json")
       .then((data) => {
        
         setTimeout(() => {
