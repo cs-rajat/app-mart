@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import imgEr from "../assets/App-Error.png";
 import Spinner from "../Components/Spinner";
 
-const InstalledApps = () => {
+const MyInstallation = () => {
   const [installed, setInstalled] = useState([]);
   const [sortAsc, setSortAsc] = useState(true);
   const [loading, setLoading] = useState(true);
@@ -123,4 +123,4 @@ const InstalledApps = () => {
   );
 };
 
-export default InstalledApps;
+export default MyInstallation;
